@@ -6,6 +6,7 @@
 
 # Mandatory variables.
 # USERNAME - username of user account.
+# PASSWORD - password of user account.
 # SHARE - directory shared on server. 
 # FILE - name of file being checked.
 
@@ -52,7 +53,6 @@ fi
 
 # Run command if all variables are in place.
 if [ $STATUS -eq 0 ]; then
-    cd /tmp
     smbclient --user $USERNAME%$PASSWORD --max-protocol $MAX_PROTOCOL --port $PORT //$IP/$SHARE --command "du $FILE_PATH" > /dev/null 2>&1
     STATUS=$?
 fi
